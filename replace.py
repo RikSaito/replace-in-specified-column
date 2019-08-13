@@ -15,6 +15,7 @@ with open(replaced_file, 'w') as writecsvfile:
     with open(file, newline='') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',')
         for row in spamreader:
-            row[column_number] = row[column_number].replace(from_replace, to_replace)
+            if row[column_number] == from_replace:
+                row[column_number] = row[column_number].replace(from_replace, to_replace)
             print(','.join(row))
             writecsvfile.write(','.join(row) + '\n')
